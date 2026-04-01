@@ -1,0 +1,359 @@
+@import "tailwindcss";
+
+/* ===== DESIGN SYSTEM ===== */
+:root {
+  /* Backgrounds */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #141414;
+  --bg-card: #1a1a1a;
+  --bg-card-hover: #222222;
+
+  /* Brand Golds & Oranges */
+  --gold-primary: #D4A017;
+  --gold-light: #F5C842;
+  --gold-dark: #A67C00;
+  --orange-fire: #E8650A;
+  --orange-ember: #C44D04;
+
+  /* Text */
+  --text-primary: #F5F0E8;
+  --text-secondary: #B8A88A;
+  --text-accent: #D4A017;
+
+  /* Effects */
+  --glow-gold: 0 0 20px rgba(212, 160, 23, 0.3);
+  --glow-fire: 0 0 30px rgba(232, 101, 10, 0.25);
+  --border-gold: 1px solid rgba(212, 160, 23, 0.3);
+}
+
+/* ===== BASE STYLES ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== NOISE TEXTURE OVERLAY ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ===== TYPOGRAPHY CLASSES ===== */
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.font-brand {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.font-body {
+  font-family: 'Barlow', sans-serif;
+}
+
+.font-menu-item {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* ===== SECTION DIVIDER ===== */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--orange-fire) 30%,
+    var(--gold-primary) 50%,
+    var(--orange-fire) 70%,
+    transparent 100%
+  );
+  border: none;
+  margin: 0;
+}
+
+/* ===== EMBER GLOW EFFECTS ===== */
+.ember-glow-bottom {
+  position: relative;
+}
+.ember-glow-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 200px;
+  background: radial-gradient(ellipse at center bottom, rgba(232, 101, 10, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ember-glow-top {
+  position: relative;
+}
+.ember-glow-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 200px;
+  background: radial-gradient(ellipse at center top, rgba(232, 101, 10, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ===== HERO FIRE GLOW ===== */
+.hero-fire-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60%;
+  background: radial-gradient(ellipse at center bottom, rgba(232, 101, 10, 0.15) 0%, rgba(196, 77, 4, 0.08) 30%, transparent 70%);
+  pointer-events: none;
+  animation: fireFlicker 5s ease-in-out infinite;
+}
+
+@keyframes fireFlicker {
+  0%, 100% { opacity: 1; }
+  25% { opacity: 0.85; }
+  50% { opacity: 0.95; }
+  75% { opacity: 0.8; }
+}
+
+/* ===== GOLD GLOW BUTTON ===== */
+.btn-gold {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 2px solid var(--gold-primary);
+  color: var(--gold-primary);
+  background: transparent;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-gold:hover {
+  background: var(--gold-primary);
+  color: var(--bg-primary);
+  box-shadow: var(--glow-gold);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
+
+/* ===== MENU CARD ===== */
+.menu-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(212, 160, 23, 0.1);
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+}
+.menu-card:hover {
+  transform: translateY(-4px);
+  background: var(--bg-card-hover);
+  border-color: rgba(212, 160, 23, 0.3);
+  box-shadow: var(--glow-gold);
+}
+
+/* ===== CATEGORY FILTER TABS ===== */
+.filter-tab {
+  padding: 8px 20px;
+  border: 1px solid var(--gold-primary);
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--gold-primary);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.filter-tab:hover {
+  background: rgba(212, 160, 23, 0.15);
+}
+.filter-tab.active {
+  background: var(--gold-primary);
+  color: var(--bg-primary);
+}
+
+/* ===== INGREDIENT CHIP ===== */
+.ingredient-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid rgba(184, 168, 138, 0.25);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ===== LOYALTY CIRCLES ===== */
+.loyalty-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  color: var(--gold-primary);
+  position: relative;
+}
+.loyalty-circle.free {
+  border-color: var(--gold-light);
+  background: rgba(212, 160, 23, 0.15);
+  box-shadow: 0 0 25px rgba(212, 160, 23, 0.4), 0 0 50px rgba(232, 101, 10, 0.2);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 25px rgba(212, 160, 23, 0.4), 0 0 50px rgba(232, 101, 10, 0.2); }
+  50% { box-shadow: 0 0 35px rgba(212, 160, 23, 0.6), 0 0 70px rgba(232, 101, 10, 0.35); }
+}
+
+/* ===== FEATURED CARD (Animated gradient border) ===== */
+.featured-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.featured-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 10px;
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    var(--gold-primary),
+    var(--orange-fire),
+    var(--orange-ember),
+    var(--gold-light),
+    var(--gold-primary)
+  );
+  z-index: 0;
+  animation: rotateBorder 4s linear infinite;
+  opacity: 0.6;
+}
+.featured-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: var(--bg-card);
+  z-index: 1;
+}
+.featured-card > * {
+  position: relative;
+  z-index: 2;
+}
+.featured-card:hover {
+  transform: translateY(-4px);
+}
+.featured-card:hover::before {
+  opacity: 1;
+}
+.featured-card:hover::after {
+  background: var(--bg-card-hover);
+}
+
+@keyframes rotateBorder {
+  to { --border-angle: 360deg; }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ===== ANIMATED BORDER (simpler fallback) ===== */
+.animated-border {
+  position: absolute;
+  inset: -2px;
+  border-radius: 10px;
+  background: linear-gradient(
+    var(--border-angle, 0deg),
+    var(--gold-primary),
+    var(--orange-fire),
+    var(--gold-light)
+  );
+  z-index: 0;
+  animation: rotateBorder 4s linear infinite;
+  opacity: 0.5;
+}
+
+/* ===== SHIMMER ANIMATION ===== */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ===== GRADIENT TEXT SHIFT ===== */
+@keyframes gradientShift {
+  0% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+  100% { background-position: 0% center; }
+}
+
+/* ===== FLAME LETTER HOVER ===== */
+.flame-letter {
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+.flame-letter:hover {
+  color: var(--gold-light) !important;
+  text-shadow: 0 0 15px rgba(212, 160, 23, 0.5), 0 0 30px rgba(232, 101, 10, 0.3);
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
