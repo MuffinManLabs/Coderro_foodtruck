@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { dailySpecials } from '../data/menu';
+
+const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const todaySpecial = dailySpecials[new Date().getDay()];
 
 const specials = [
-  { icon: '🔥', text: 'TODAY\'S SPECIAL: Flamethrower Burger + Loaded Fries — $18.99' },
-  { icon: '⭐', text: 'FAN FAVORITE: The Tru Burger — Lettuce, Tomato, Turkey Bacon, Cheddar & Tru Sauce' },
-  { icon: '🍗', text: 'TRY THE Mother Clucker — Crispy Chicken Perfection' },
-  { icon: '🎉', text: 'BUY 5 MEALS, GET THE 6TH FREE — Ask for a loyalty card!' },
+  { icon: '🔥', text: `TODAY\u2019S SPECIAL: ${todaySpecial.name}${todaySpecial.price ? ` \u2014 $${todaySpecial.price.toFixed(2)}` : ''}` },
+  { icon: '⭐', text: 'FAN FAVORITE: The Tru Burger \u2014 Lettuce, Tomato, Turkey Bacon, Cheddar & Tru Sauce' },
+  { icon: '🍗', text: 'TRY THE Mother Clucker \u2014 Crispy Chicken Perfection' },
+  { icon: '🥤', text: 'EVERY MEAL INCLUDES FRIES & A DRINK \u2014 No extra charge!' },
+  { icon: '🎉', text: 'BUY 5 MEALS, GET THE 6TH FREE \u2014 Ask for a loyalty card!' },
 ];
 
 export default function DailySpecial() {

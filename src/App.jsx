@@ -6,6 +6,7 @@ import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import DailySpecial from './components/DailySpecial';
+import DailySpecials from './components/DailySpecials';
 import Menu from './components/Menu';
 import About from './components/About';
 import Loyalty from './components/Loyalty';
@@ -32,6 +33,10 @@ function App() {
             <DailySpecial />
             <hr className="section-divider" />
             <Menu />
+            <hr className="section-divider" />
+            <SectionReveal>
+              <DailySpecials />
+            </SectionReveal>
             <hr className="section-divider" />
             <SectionReveal>
               <MealBuilder />

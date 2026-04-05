@@ -84,7 +84,7 @@ export default function About() {
               <p className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-primary)' }}>
                 Born from a love of bold flavors and an even bolder hustle, Tru
                 Ambitionz brings premium street food to the streets of Lynchburg.
-                Every burger is a half-pound of hand-seasoned, flame-grilled
+                Every burger is a half-pound of hand-seasoned, flat-top grilled
                 perfection.
               </p>
               <p className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
